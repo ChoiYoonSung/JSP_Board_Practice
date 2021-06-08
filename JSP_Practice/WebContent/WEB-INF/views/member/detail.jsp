@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <title>회원상세보기</title>
 
 <body>
@@ -9,6 +9,22 @@
   <!-- Content Wrapper. Contains page content -->
   <div >
     <!-- Main content -->
+    <section class="content-header">
+		<div class="container-fluid">
+			<div class="row md-2">
+				<div class="col-sm-6">
+					<h1>회원상세정보</h1>
+				</div>
+				<div class="col-sm-6">
+					<ol class="breadcrumb float-sm-right">
+						<li class="breadcrumb-item"><a href="#"> <i class="fa fa-dashboard">회원관리</i>
+						</a></li>
+						<li class="breadcrumb-item active">상세정보</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</section>
     <section class="content register-page">       
 		<div class="register-box">         
 	    	<form role="form" class="form-horizontal"  method="post">
@@ -50,18 +66,21 @@
 	              
 		          <div class="card-footer" >
 		          		<div class="row">
+       					<c:if test="${loginUser.enabled == 1 }">
 			          		<div class="col-sm-3 text-center">
 			          			<button type="button" onclick="location.href='modifyForm.do?id=${member.id}';" id="modifyBtn" class="btn btn-warning ">수 정</button>
 			          		</div>
-		          		
 			          		<div class="col-sm-3 text-center">
 			          			<button type="button" onclick="location.href='remove.do?id=${member.id}';" 
 			          			id="deleteBtn" class="btn btn-danger" >삭 제</button>
 			          		</div>
 			          		<div class="col-sm-3 text-center">
-			          			<button type="button" id="stopBtn" class="btn btn-info" >정 지</button>
+			          			<button type="button" onclick="location.href='stop.do?id=${member.id }'" id="stopBtn" class="btn btn-info" >정 지</button>
 			          		</div>
-			          	
+			          	</c:if>
+          				<c:if test="${loginUser.enabled == 0 }">
+          				<div class="col-sm-9"></div>
+          				</c:if>
 			          		<div class="col-sm-3 text-center">
 			            		<button type="button" id="listBtn" onclick="CloseWindow()" class="btn btn-primary pull-right">닫 기</button>
 			            	</div>

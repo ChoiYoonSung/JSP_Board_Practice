@@ -18,11 +18,11 @@
 			<p class="login-box-msg">Sign in to start your session</p>
 			<form action="<%=request.getContextPath() %>/login.do"	method="post">
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" name="id" placeholder="Enter ID." value="<%-- ${pastID } --%>mimi">
+					<input type="text" class="form-control" name="id" placeholder="Enter ID." value="<%-- ${pastID } --%>test">
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="password" class="form-control" name="pwd" placeholder="Enter Password."  value="mimi">
+					<input type="password" class="form-control" name="pwd" placeholder="Enter Password."  value="test">
 					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 				</div>
 				<div class="row">

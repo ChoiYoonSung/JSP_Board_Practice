@@ -33,7 +33,9 @@
 	<section class="content">
 		<div class="card">
 			<div class="card-header with-border">
+			<c:if test="${loginUser.enabled == 1 }">
 				<button type="button" class="btn btn-primary" onclick="OpenWindow('registForm.do', '회원등록', 800, 700);">회원등록</button>
+			</c:if>
 				<div id="keyword" class="card-tools" style="width:550px;">
 					<div class="input-group row">
 						<select class="form-control col-md-3" name="perPageNum" id="perPageNum"

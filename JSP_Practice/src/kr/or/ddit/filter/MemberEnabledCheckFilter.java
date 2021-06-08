@@ -18,39 +18,39 @@ import javax.servlet.http.HttpSession;
 
 import kr.or.ddit.dto.MemberVO;
 
-public class LoginCheckFilter implements Filter{
-	
+public class MemberEnabledCheckFilter implements Filter {
 	List<String> exUrls = new ArrayList<String>(); 
-	
 	@Override
 	public void destroy() {
+		// TODO Auto-generated method stub
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 		HttpServletRequest httpReq = (HttpServletRequest) request;
 		HttpServletResponse httpResp = (HttpServletResponse) response;
 		
 		// 제외 url 설정
 		String reqUrl = httpReq.getRequestURI().substring(httpReq.getContextPath().length());
-		
 		if(excludeCheck(reqUrl)) {
 			chain.doFilter(request, response);
 			return;
 		}
 		HttpSession session = httpReq.getSession();
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
-		if(loginUser == null) {
-			httpResp.setContentType("text/html;charset=utf-8;");
-			PrintWriter out = httpResp.getWriter();
-			out.println("<script>");
-			out.println("alert('로그인이 필요한 서비스입니다.');");
-			out.println("if(window.opener){window.close();window.opener.parent.location.href='"
-					+ httpReq.getContextPath()
-					+ "/';}else{");
-			out.println("window.parent.location.href='"+httpReq.getContextPath()+"/';};");
-			out.println("</script>");
-			out.close();
+		if(loginUser.getEnabled() == 0) {
+			if(reqUrl.contains("modify") || reqUrl.contains("remove") || reqUrl.contains("disabled") || reqUrl.contains("regist")) {
+				httpResp.setContentType("text/html;charset=utf-8;");
+				PrintWriter out = httpResp.getWriter();
+				out.println("<script>");
+				out.println("alert('접근권한이 없습니다.');");
+				out.println("history.go(-1);");
+				out.println("</script>");
+				out.close();
+			}else {
+				chain.doFilter(request, response);
+			}
 		}else {
 			chain.doFilter(request, response);
 		}
@@ -63,7 +63,6 @@ public class LoginCheckFilter implements Filter{
 		while(st.hasMoreTokens()) {
 			exUrls.add(st.nextToken().trim());
 		}
-//		System.out.println(exUrls);
 	}
 	
 	private boolean excludeCheck(String url) {
