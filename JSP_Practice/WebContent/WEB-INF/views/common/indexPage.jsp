@@ -7,7 +7,7 @@
 	<jsp:param value="<%=msg %>" name="msg"/>
 </jsp:include> --%>
 
-<title>Choi's Home</title>
+<title>Semi Project</title>
 <head>
 <style>
 *{margin:0; padding:0;}
@@ -16,6 +16,7 @@
 <body>
 
 	<%@ include file="/WEB-INF/views/include/main_header.jsp" %>
+	<%@ include file="/WEB-INF/views/include/main_aside.jsp" %>
 	<div class="content-wrapper" style="background-color: #FFFFFF;">
 		<iframe name="ifr" src="/main.do" frameborder="0" style="width:100%; height:86vh;"></iframe>
 	</div>

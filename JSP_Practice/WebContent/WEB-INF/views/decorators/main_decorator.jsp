@@ -6,15 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title><decorator:title default="Choi's System"/> </title>
+<title><decorator:title default="Semi Project"/> </title>
 <%@ include file="/WEB-INF/views/include/style.jsp" %>
 <decorator:head />
 </head>
-<body class="hold-transition sidebar-mini" onload="init()">
-<div class="wrapper">
+<body class="wrapper" onload="init()">
 	<decorator:body />
-</div>
-<%@ include file="/WEB-INF/views/include/js.jsp" %>
 </body>
+<%@ include file="/WEB-INF/views/include/js.jsp" %>
 <script src="/resources/js/common.js"></script>
 </html>
