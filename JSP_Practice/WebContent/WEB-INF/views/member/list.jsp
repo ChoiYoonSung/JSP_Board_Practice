@@ -40,10 +40,10 @@
 					<div class="input-group row">
 						<select class="form-control col-md-3" name="perPageNum" id="perPageNum"
 							onchange="list_go(1)">
-							<option value="10">정렬 개수</option>
-							<option value="2" ${cri.perPageNum eq 2 ? 'selected' : "" }>2개씩</option>
-							<option value="3" ${cri.perPageNum eq 3 ? 'selected' : "" }>3개씩</option>
-							<option value="5" ${cri.perPageNum eq 5 ? 'selected' : "" }>5개씩</option>
+							<option value="10">10개씩 보기</option>
+							<option value="2" ${cri.perPageNum eq 2 ? 'selected' : "" }>2개씩 보기</option>
+							<option value="3" ${cri.perPageNum eq 3 ? 'selected' : "" }>3개씩 보기</option>
+							<option value="5" ${cri.perPageNum eq 5 ? 'selected' : "" }>5개씩 보기</option>
 						</select>
 						<select class="form-control col-md-3" name="searchType" id="searchType" >
 							<option value="">검색구분</option>
@@ -61,26 +61,36 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<div class="row">
-					<div class="col-sm-12">
-						<table class="table table-bordered">
-							<tr>
-								<th>아이디</th>
-								<th>패스워드</th>
-								<th>이메일</th>
-								<th>전화번호</th>
-								<th>등록날짜</th>
-							</tr>
+				<div class="col-sm-12">
+					<div class="row">
 						<c:forEach var="member" items="${memList }" >
-							<tr onclick="OpenWindow('detail.do?id=${member.id }','','800','900')" style="cursor:pointer;">
-								<td>${member.id }</td>
-								<td>${member.pwd }</td>
-								<td>${member.email }</td>
-								<td>${member.phone }</td>
-								<td><fmt:formatDate value="${member.regDate }" pattern="yyyy년 MM월 dd일"/> </td>
-							</tr>
-						</c:forEach>
-						</table>
+						<div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+			              <div class="card bg-light d-flex flex-fill">
+			                <div class="card-body pt-0">
+			                  <div class="row">
+			                    <div class="col-7">
+			                      <h2 class="lead"><b>${member.name }</b></h2>
+			                      <ul class="ml-4 mb-0 fa-ul text-muted">
+			                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: ${member.address }</li>
+			                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone : ${member.phone }</li>
+			                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> Email : ${member.email }</li>
+			                      </ul>
+			                    </div>
+			                    <div class="col-5 text-center">
+			                      <img class="img-circle img-fluid" src="../../dist/img/user1-128x128.jpg" alt="user-avatar" >
+			                    </div>
+			                  </div>
+			                </div>
+			                <div class="card-footer">
+			                  <div class="text-right">
+			                    <a href="javascript:OpenWindow('detail.do?id=${member.id }','','800','900')" class="btn btn-sm btn-primary">
+			                      <i class="fas fa-user"></i>&nbsp;&nbsp;정보 보기
+			                    </a>
+			                  </div>
+			                </div>
+			              </div>
+			            </div>
+			          </c:forEach>
 					</div>
 				</div>
 			</div>

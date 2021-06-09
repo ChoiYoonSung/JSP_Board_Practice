@@ -36,28 +36,28 @@
 					</div>
 					<br />
 	                <div class="form-group row" >
-	                  <label for="inputId" class="col-sm-3 control-label text-right">아이디</label>
+	                  <label for="inputId" class="col-sm-3 control-label text-right">ID : </label>
 	
 	                  <div class="col-sm-9">
 	                    <input name="id" type="text" class="form-control" id="inputId"  value="${member.id }" readonly>
 	                  </div>
 	                </div>	               
 	                <div class="form-group row">
-	                  <label for="inputName" class="col-sm-3 control-label text-right">이  름</label>
+	                  <label for="inputName" class="col-sm-3 control-label text-right">이  름 : </label>
 	
 	                  <div class="col-sm-9">
 	                    <input name="pwd" type="text" class="form-control" id="inputName" value="${member.name }" readonly>
 	                  </div>
 	                </div>
 	                 <div class="form-group row">
-	                  <label for="inputEmail" class="col-sm-3 control-label text-right">이메일</label>
+	                  <label for="inputEmail" class="col-sm-3 control-label text-right">E-mail : </label>
 	
 	                  <div class="col-sm-9">
 	                    <input name="email" type="email" class="form-control" id="inputEmail" value="${member.email }" readonly>
 	                  </div>
 	                </div>
 	                 <div class="form-group row">
-	                  <label for="inputPhone" class="col-sm-3 control-label text-right">전화번호</label>
+	                  <label for="inputPhone" class="col-sm-3 control-label text-right">Tel : </label>
 	                  <div class="col-sm-9">   
 	                  	<input name="phone" type="text" class="form-control" id="inputPhone" value="${member.phone }" readonly>	                
 	                  </div>                  
@@ -66,7 +66,7 @@
 	              
 		          <div class="card-footer" >
 		          		<div class="row">
-       					<c:if test="${loginUser.enabled == 1 }">
+       					<c:if test="${loginUser.id == member.id }">
 			          		<div class="col-sm-3 text-center">
 			          			<button type="button" onclick="location.href='modifyForm.do?id=${member.id}';" id="modifyBtn" class="btn btn-warning ">수 정</button>
 			          		</div>
@@ -78,7 +78,7 @@
 			          			<button type="button" onclick="location.href='stop.do?id=${member.id }'" id="stopBtn" class="btn btn-info" >정 지</button>
 			          		</div>
 			          	</c:if>
-          				<c:if test="${loginUser.enabled == 0 }">
+          				<c:if test="${loginUser.id != member.id }">
           				<div class="col-sm-9"></div>
           				</c:if>
 			          		<div class="col-sm-3 text-center">
