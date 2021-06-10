@@ -50,6 +50,13 @@
 	                  </div>
 	                </div>
 	                 <div class="form-group row">
+	                  <label for="inputAddress" class="col-sm-3 control-label text-right">주소 : </label>
+	
+	                  <div class="col-sm-9">
+	                    <input name="address" type="text" class="form-control" id="inputAddress" value="${member.address }" readonly>
+	                  </div>
+	                </div>
+	                 <div class="form-group row">
 	                  <label for="inputEmail" class="col-sm-3 control-label text-right">E-mail : </label>
 	
 	                  <div class="col-sm-9">
@@ -57,7 +64,7 @@
 	                  </div>
 	                </div>
 	                 <div class="form-group row">
-	                  <label for="inputPhone" class="col-sm-3 control-label text-right">Tel : </label>
+	                  <label for="inputPhone" class="col-sm-3 control-label text-right">연락처 : </label>
 	                  <div class="col-sm-9">   
 	                  	<input name="phone" type="text" class="form-control" id="inputPhone" value="${member.phone }" readonly>	                
 	                  </div>                  
@@ -66,7 +73,7 @@
 	              
 		          <div class="card-footer" >
 		          		<div class="row">
-       					<c:if test="${loginUser.id == member.id }">
+       					<c:if test="${loginUser.id == member.id || loginUser.authority == 'ROLE_ADMIN' || loginUser.authority == 'ROLE_MANAGER' }">
 			          		<div class="col-sm-3 text-center">
 			          			<button type="button" onclick="location.href='modifyForm.do?id=${member.id}';" id="modifyBtn" class="btn btn-warning ">수 정</button>
 			          		</div>
@@ -78,7 +85,7 @@
 			          			<button type="button" onclick="location.href='stop.do?id=${member.id }'" id="stopBtn" class="btn btn-info" >정 지</button>
 			          		</div>
 			          	</c:if>
-          				<c:if test="${loginUser.id != member.id }">
+          				<c:if test="${loginUser.authority == 'ROLE_USER' && loginUser.id != member.id }">
           				<div class="col-sm-9"></div>
           				</c:if>
 			          		<div class="col-sm-3 text-center">

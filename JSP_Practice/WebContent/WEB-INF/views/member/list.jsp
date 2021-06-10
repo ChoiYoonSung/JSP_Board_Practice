@@ -34,7 +34,7 @@
 		<div class="card">
 			<div class="card-header with-border">
 			<c:if test="${loginUser.enabled == 1 }">
-				<button type="button" class="btn btn-primary" onclick="OpenWindow('registForm.do', '회원등록', 800, 700);">회원등록</button>
+				<button type="button" class="btn btn-primary" onclick="OpenWindow('registForm.do', '회원등록', 800, 900);">회원등록</button>
 			</c:if>
 				<div id="keyword" class="card-tools" style="width:550px;">
 					<div class="input-group row">
@@ -64,20 +64,21 @@
 				<div class="col-sm-12">
 					<div class="row">
 						<c:forEach var="member" items="${memList }" >
-						<div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+						<div class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
 			              <div class="card bg-light d-flex flex-fill">
 			                <div class="card-body pt-0">
 			                  <div class="row">
 			                    <div class="col-7">
 			                      <h2 class="lead"><b>${member.name }</b></h2>
+			                      <p class="text-muted text-sm"><b>Authority : </b> ${member.authority } </p>
 			                      <ul class="ml-4 mb-0 fa-ul text-muted">
-			                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: ${member.address }</li>
-			                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone : ${member.phone }</li>
-			                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> Email : ${member.email }</li>
+			                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address<br>${member.address }</li><hr>
+			                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone<br>${member.phone }</li><hr>
+			                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> Email<br>${member.email }</li><hr>
 			                      </ul>
 			                    </div>
 			                    <div class="col-5 text-center">
-			                      <img class="img-circle img-fluid" src="../../dist/img/user1-128x128.jpg" alt="user-avatar" >
+			                      <img class="img-circle img-fluid" src="/member/getPictureById.do?id=${member.id }" alt="member-picture" >
 			                    </div>
 			                  </div>
 			                </div>

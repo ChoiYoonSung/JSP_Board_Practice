@@ -10,7 +10,7 @@
 <body  class="hold-transition login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<a href="#"><b>Administrator Sign In</b></a>
+			<a href="#"><b>Semi Project</b></a>
 		</div>
 		<!-- /.login-logo -->
 		<div class="card">
@@ -18,7 +18,7 @@
 			<p class="login-box-msg">Sign in to start your session</p>
 			<form action="<%=request.getContextPath() %>/login.do"	method="post">
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" name="id" placeholder="Enter ID." value="<%-- ${pastID } --%>test">
+					<input type="text" class="form-control" name="id" placeholder="Enter ID." value="test">
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">

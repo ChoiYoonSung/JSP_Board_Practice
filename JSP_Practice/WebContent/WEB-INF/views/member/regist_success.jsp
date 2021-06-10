@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
-alert("정지된 회원입니다.\n서비스 이용에 제한이 걸립니다.");
-location.href="/";
+alert("성공적으로 회원가입이 되었습니다.");
+CloseWindow();
 </script>

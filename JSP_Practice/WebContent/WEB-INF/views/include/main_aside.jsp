@@ -7,7 +7,7 @@
     <a href="index.do" class="brand-link">
       <img src="<%=request.getContextPath() %>/resources/bootstrap/dist/img/AdminLTELogo.png" alt="Member Picture" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Semi Project - Team 1</span>
     </a>
 
     <!-- Sidebar -->

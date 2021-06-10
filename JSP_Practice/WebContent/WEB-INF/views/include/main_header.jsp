@@ -21,18 +21,6 @@
      	</c:forEach>
     </ul>
 
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
-
     <!-- Right navbar links -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex navbar-nav ml-auto">
         <div class="image">
@@ -40,7 +28,7 @@
         </div>
         <div class="info">
          <div class="row">
-         	<a href="#" class="d-block nav-link">${loginUser.name } 님 </a>
+         	<a href="#" class="d-block nav-link"><b>${loginUser.name }</b> 님 </a>
          	<button onclick="location.href='<%=request.getContextPath() %>/logout.do';" class="btn btn-xs btn-primary col-xs-3" type="button">LOGOUT</button>
          </div>
         </div>

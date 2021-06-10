@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <title>회원수정</title>
 
@@ -53,29 +54,26 @@
 						</div>
 
 						<div class="form-group row">
-							<label for="pwd" class="col-sm-3 control-label text-center">패스워드</label>
+							<label for="pwd" class="col-sm-3 control-label text-center">비밀번호</label>
 							<div class="col-sm-9">
 								<input name="pwd" type="password" class="form-control" id="pwd" placeholder="20글자 영문자,숫자,특수문자 조합" value="${member.pwd }">
 							</div>
 						</div>
 						
 						<div class="form-group row">
-							<label for="pwd" class="col-sm-3 control-label text-center">이름</label>
+							<label for="name" class="col-sm-3 control-label text-center">이름</label>
 							<div class="col-sm-9">
-								<input name="name" type="text" class="form-control" id="name" placeholder="20글자 영문자,숫자,특수문자 조합" value="${member.name }">
+								<input name="name" type="text" class="form-control" id="name" placeholder="이름을 입력하십시오." value="${member.name }">
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label for="address" class="col-sm-3 control-label text-center">주소</label>
+							<div class="col-sm-9">
+								<input name="address" type="text" class="form-control" id="address" placeholder="ex) 대전광역시 중구 대흥동..." value="${member.address }">
 							</div>
 						</div>
 
-						<div class="form-group row">
-							<label for="authority" class="col-sm-3 control-label text-center">권한</label>
-							<div class="col-sm-9">
-								<select name="authority" class="form-control">
-									<option ${member.authority eq 'ROLE_USER' ? 'selected' : ''} value="ROLE_USER">사용자</option>
-									<option ${member.authority eq 'ROLE_MANAGER' ? 'selected' : ''} value="ROLE_MANAGER">운영자</option>
-									<option ${member.authority eq 'ROLE_ADMIN' ? 'selected' : ''} value="ROLE_ADMIN">관리자</option>
-								</select>
-							</div>
-						</div>
 
 						<div class="form-group row">
 							<label for="email" class="col-sm-3 control-label text-center">이메일</label>
@@ -85,12 +83,22 @@
 						</div>
 						
 						<div class="form-group row">
-							<label for="phone" class="col-sm-3 control-label text-center">전화번호</label>
+							<label for="phone" class="col-sm-3 control-label text-center">연락처</label>
 							<div class="col-sm-9">
 								<input name="phone" type="text" class="form-control" id="inputPassword3" value="${member.phone }">
 							</div>
 						</div>
-
+						<div class="form-group row" ${member.authority eq 'ROLE_ADMIN' ? '' : 'style="display:none"'}>
+							<label for="authority" class="col-sm-3 control-label text-center">권한</label>
+							<div class="col-sm-9">
+								<select name="authority" class="form-control">
+									<option ${member.authority eq 'ROLE_USER' ? 'selected' : ''} value="ROLE_USER">사용자</option>
+									<option ${member.authority eq 'ROLE_MANAGER' ? 'selected' : ''} value="ROLE_MANAGER">운영자</option>
+									<option ${member.authority eq 'ROLE_ADMIN' ? 'selected' : ''} value="ROLE_ADMIN">관리자</option>
+								</select>
+							</div>
+						</div>
+						
 						<div class="card-footer row" style="margin-top: 0; border-top: none;">
 							<button type="button" id="modifyBtn" onclick="modify_go()" class="btn btn-warning col-sm-4 text-center">수정하기</button>
 							<div class="col-sm-4"></div>
