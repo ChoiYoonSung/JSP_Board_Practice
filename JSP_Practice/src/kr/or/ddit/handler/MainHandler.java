@@ -8,6 +8,7 @@ public class MainHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String url = "common/main";
+		
 		return url;
 	}
 

@@ -10,28 +10,28 @@ import kr.or.ddit.command.Criteria;
 import kr.or.ddit.command.SearchCriteria;
 import kr.or.ddit.dto.MemberVO;
 
-public class MemberDAOImpl implements MemberDAO{
+public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public MemberVO selectMemberById(SqlSession session, String id) throws SQLException {
-		MemberVO member = session.selectOne("Member-Mapper.selectMemberById",id);
+		MemberVO member = session.selectOne("Member-Mapper.selectMemberByID", id);
 		return member;
 	}
 
 	@Override
 	public List<MemberVO> selectMemberList(SqlSession session) throws SQLException {
-		List<MemberVO> memList = session.selectList("Member-Mapper.selectMemberList");
-		return memList;
+		List<MemberVO> memberList = session.selectList("Member-Mapper.selectMemberList");
+		return memberList;
 	}
 
 	@Override
 	public List<MemberVO> selectMemberList(SqlSession session, Criteria cri) throws SQLException {
 		int offset = cri.getStartRowNum();
-		int limit = cri.getEndRowNum();
+		int limit = cri.getPerPageNum();
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		List<MemberVO> memList = session.selectList("Member-Mapper.selectMemberList",null,rowBounds);
-		return memList;
+		List<MemberVO> memberList = session.selectList("Member-Mapper.selectMemberList", null, rowBounds);
+		return memberList;
 	}
 
 	@Override
@@ -40,14 +40,15 @@ public class MemberDAOImpl implements MemberDAO{
 		int limit = cri.getPerPageNum();
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		List<MemberVO> memList = session.selectList("Member-Mapper.selectSearchMemberList",cri,rowBounds);
-		return memList;
+		List<MemberVO> memberList = session.selectList("Member-Mapper.selectSearchMemberList", cri, rowBounds);
+		return memberList;
 	}
 
 	@Override
 	public int selectMemberListCount(SqlSession session, SearchCriteria cri) throws SQLException {
-		int cnt = session.selectOne("Member-Mapper.selectSearchMemberListCount",cri);
-		return cnt;
+		int count = 0;
+		count = session.selectOne("Member-Mapper.selectSearchMemberListCount", cri);
+		return count;
 	}
 
 	@Override
@@ -64,14 +65,15 @@ public class MemberDAOImpl implements MemberDAO{
 	public void deleteMember(SqlSession session, String id) throws SQLException {
 		session.update("Member-Mapper.deleteMember", id);
 	}
-	
+
 	@Override
 	public void disabledMember(SqlSession session, String id) throws SQLException {
 		session.update("Member-Mapper.disabledMember", id);
 	}
-	
+
 	@Override
 	public void enabledMember(SqlSession session, String id) throws SQLException {
 		session.update("Member-Mapper.enabledMember", id);
 	}
+
 }

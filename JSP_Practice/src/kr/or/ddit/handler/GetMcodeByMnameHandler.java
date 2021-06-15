@@ -7,7 +7,8 @@ import kr.or.ddit.controller.JSONResolver;
 import kr.or.ddit.dto.MenuVO;
 import kr.or.ddit.service.MenuService;
 
-public class GetMcodeByMnameHandler implements Handler{
+public class GetMcodeByMnameHandler implements Handler {
+	
 	private MenuService menuService;
 	public void setMenuService(MenuService menuService) {
 		this.menuService = menuService;
@@ -15,13 +16,13 @@ public class GetMcodeByMnameHandler implements Handler{
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String url = "";
+		String url = null;
 		
 		String mname = request.getParameter("mName");
 		
 		MenuVO menu = menuService.getMenuByMname(mname);
 		
-		JSONResolver.views(response, menu);
+		JSONResolver.view(response, menu);
 		
 		return url;
 	}

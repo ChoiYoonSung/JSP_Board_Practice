@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<decorators defaultdir="/WEB-INF/views/decorators">
+<decorators defaultdir="/WEB-INF/views/decorators">	
 	<decorator name="main" page="main_decorator.jsp">
 		<pattern>/index.do*</pattern>
-	</decorator>
+	</decorator>		
 	
 	<decorator name="openWindow" page="open_decorator.jsp">
 		<pattern>/**/*</pattern>
@@ -12,6 +12,5 @@
 	
 	<excludes>
 		<pattern>/resources/*</pattern>
-	</excludes>
-	
+	</excludes>	
 </decorators>

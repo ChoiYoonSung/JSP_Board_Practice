@@ -1397,7 +1397,7 @@ function orient(u, seriesIdx, cb) {
 			lineToH,
 			rectH,
 			arcH,
-			bezierCurveToH
+			bezierCurveToH,
 		)
 		: cb(
 			series,
@@ -1415,7 +1415,7 @@ function orient(u, seriesIdx, cb) {
 			lineToV,
 			rectV,
 			arcV,
-			bezierCurveToV
+			bezierCurveToV,
 		)
 	);
 }
